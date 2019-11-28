@@ -21,15 +21,26 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor yellowColor];
 
-    
+    UIButton * startBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.view addSubview:startBtn];
+    startBtn.backgroundColor = [UIColor redColor];
+    startBtn.frame = CGRectMake(100, 100, 100, 100);
+    [startBtn setTitle:@"开始" forState:UIControlStateNormal];
+    [startBtn addTarget:self action:@selector(startAction) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)startAction{
+    // 开启定时器
+    [self.timer start];
+}
+- (LSTimer *)timer{
+    if (_timer == nil) {
+        _timer = [[LSTimer alloc] initWithTimeInterval:1 andWaitTime:0 eventHandler:^{
+            NSLog(@"1.");
+        }];
+    }
+    return _timer;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    LSTimer * timer = [[LSTimer alloc] initWithTimeInterval:1 andWaitTime:-1 eventHandler:^{
-        NSLog(@"1...");
-    }];
-    _timer = timer;
-}
 - (void)dealloc{
     NSLog(@"销毁了...");
 }

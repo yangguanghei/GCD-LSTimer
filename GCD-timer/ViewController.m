@@ -26,6 +26,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     NextViewController * nextVC = [NextViewController new];
+    nextVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     [self presentViewController:nextVC animated:YES completion:nil];
 }
 @end

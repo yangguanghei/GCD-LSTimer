@@ -16,10 +16,6 @@
 
 @interface LSTimer ()
 
-/// 时间间隔
-@property (nonatomic, assign) float timeInterval;
-@property (nonatomic, assign) float waitTime;
-@property (nonatomic, strong) void(^handler)(void);
 @property (nonatomic, strong) dispatch_source_t timer;
 
 @end
@@ -29,34 +25,35 @@
 - (instancetype)initWithTimeInterval:(float)interval andWaitTime:(float)waitTime eventHandler:(nonnull void (^)(void))handler{
     self = [super init];
     if (self) {
-        _timeInterval = interval;
-        _handler = handler;
-        if (_waitTime <= 0) {
-            _waitTime = -1;
-        }
-        _waitTime = waitTime;
-        [self createTimerWithTimerInterval:interval handler:handler];
-        
+        [self createTimerWithTimerInterval:interval andWaitTime:waitTime handler:handler];
     }
     return self;
 }
 /// 创建定时器
-- (void)createTimerWithTimerInterval:(float)interval handler:(void(^)(void))handler{
+- (void)createTimerWithTimerInterval:(float)interval andWaitTime:(float)waitTime handler:(void(^)(void))handler{
+    
+    __block float waittingTime = waitTime;
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
     dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, interval * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(timer, ^{
-        
-        if (self.waitTime != -1) {
-            if (self.waitTime == 0) {
-                [self stopTimer];
+        if (waitTime <= 0) {    // 时间无限
+            handler();
+        }else{  // 时间有限
+            if (waittingTime <= 0) {
+                dispatch_source_cancel(timer);
                 return ;
             }
-            self.waitTime --;
+            handler();
+            waittingTime --;
         }
-        handler();
+        
     });
     _timer = timer;
-    [self resumeTimer];
+    dispatch_resume(timer);
+    
+}
+- (void)start{
+    NSLog(@"没有实际意义的start...");
 }
 /// 暂停
 -(void)pauseTimer{
@@ -76,6 +73,10 @@
         dispatch_source_cancel(_timer);
         _timer = nil;
     }
+}
+- (void)dealloc{
+    NSLog(@"Timer销毁了...");
+    [self stopTimer];
 }
 
 @end
