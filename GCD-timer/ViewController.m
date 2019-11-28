@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-
+#import "NextViewController.h"
 @interface ViewController ()
+
 
 @end
 
@@ -17,7 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor greenColor];
+    
+   
 }
 
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NextViewController * nextVC = [NextViewController new];
+    [self presentViewController:nextVC animated:YES completion:nil];
+}
 @end

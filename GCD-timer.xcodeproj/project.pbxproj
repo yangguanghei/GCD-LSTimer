@@ -16,6 +16,8 @@
 		A2243868238F6BCA008212CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2243867238F6BCA008212CC /* main.m */; };
 		A2243872238F6BCA008212CC /* GCD_timerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2243871238F6BCA008212CC /* GCD_timerTests.m */; };
 		A224387D238F6BCA008212CC /* GCD_timerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A224387C238F6BCA008212CC /* GCD_timerUITests.m */; };
+		A224388C238F6DF9008212CC /* LSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A224388B238F6DF9008212CC /* LSTimer.m */; };
+		A224388F238F701E008212CC /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A224388E238F701E008212CC /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		A2243878238F6BCA008212CC /* GCD-timerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GCD-timerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A224387C238F6BCA008212CC /* GCD_timerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCD_timerUITests.m; sourceTree = "<group>"; };
 		A224387E238F6BCA008212CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A224388A238F6DF9008212CC /* LSTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSTimer.h; sourceTree = "<group>"; };
+		A224388B238F6DF9008212CC /* LSTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSTimer.m; sourceTree = "<group>"; };
+		A224388D238F701E008212CC /* NextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
+		A224388E238F701E008212CC /* NextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,10 @@
 				A2243859238F6BC7008212CC /* SceneDelegate.m */,
 				A224385B238F6BC7008212CC /* ViewController.h */,
 				A224385C238F6BC7008212CC /* ViewController.m */,
+				A224388D238F701E008212CC /* NextViewController.h */,
+				A224388E238F701E008212CC /* NextViewController.m */,
+				A224388A238F6DF9008212CC /* LSTimer.h */,
+				A224388B238F6DF9008212CC /* LSTimer.m */,
 				A224385E238F6BC7008212CC /* Main.storyboard */,
 				A2243861238F6BCA008212CC /* Assets.xcassets */,
 				A2243863238F6BCA008212CC /* LaunchScreen.storyboard */,
@@ -268,9 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A224385D238F6BC7008212CC /* ViewController.m in Sources */,
+				A224388F238F701E008212CC /* NextViewController.m in Sources */,
 				A2243857238F6BC7008212CC /* AppDelegate.m in Sources */,
 				A2243868238F6BCA008212CC /* main.m in Sources */,
 				A224385A238F6BC7008212CC /* SceneDelegate.m in Sources */,
+				A224388C238F6DF9008212CC /* LSTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +452,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K8ETH5Y5NB;
 				INFOPLIST_FILE = "GCD-timer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,7 +470,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K8ETH5Y5NB;
 				INFOPLIST_FILE = "GCD-timer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
